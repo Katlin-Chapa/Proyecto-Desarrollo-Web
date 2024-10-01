@@ -1,48 +1,114 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Color de fondo claro */
-    color: #343a40; /* Color de texto oscuro */
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-h1, h2, h3, h4 {
-    color: #007bff; /* Color azul para los encabezados */
+/* Enlace */
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Estilos de la barra de navegación */
+/* Navbar */
 .navbar {
-    margin-bottom: 20px; /* Espacio debajo de la barra de navegación */
+    background-color: #023047;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.nav-link {
-    color: #007bff; /* Color de los enlaces */
+.navbar-brand {
+    color: #ffb703;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
-.nav-link:hover {
-    color: #0056b3; /* Color al pasar el ratón sobre los enlaces */
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
 }
 
-/* Estilo para el contenido principal */
+.navbar-nav .nav-link:hover {
+    color: #ffb703;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-color: #ffb703;
+}
+
+.btn-outline-primary {
+    border-color: #ffb703;
+    color: #ffb703;
+}
+
+.btn-outline-primary:hover {
+    background-color: #ffb703;
+    color: white;
+}
+
+.btn-outline-danger {
+    border-color: #fb8500;
+    color: #fb8500;
+}
+
+.btn-outline-danger:hover {
+    background-color: #fb8500;
+    color: white;
+}
+
+/* Main content */
 main {
-    background-color: #ffffff; /* Fondo blanco para el contenido */
-    padding: 20px; /* Relleno */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 30px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-/* Estilos del pie de página */
+/* Sombra en hover */
+main:hover {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
 footer {
-    margin-top: 20px; /* Espacio encima del pie de página */
-    border-top: 1px solid #dee2e6; /* Línea superior */
+    background-color: #023047;
+    color: #fff;
+    padding: 20px 0;
 }
 
 footer p {
-    margin: 0; /* Sin margen en el párrafo del pie de página */
+    margin: 0;
+    font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 576px) {
+/* Media queries para mejor ergonomía en móviles */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-nav .nav-link {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar-brand {
+        text-align: center;
+        width: 100%;
+    }
+
     main {
-        padding: 10px; /* Menos relleno en pantallas pequeñas */
+        padding: 20px 10px;
     }
 }

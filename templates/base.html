@@ -1,74 +1,60 @@
 {% load static %}
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Primer Proyecto{% endblock %}</title>
+    <title>{% block title %}Ferretería El Tornillo{% endblock %}</title>
 
-    <!-- Agrega el enlace al archivo CSS de Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlace a los estilos -->
     <link href="{% static 'estilos.css' %}" rel="stylesheet">
+
+    <!-- Iconos de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
-
-    {% block extra_style %}
-
-    {% endblock %}
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Inicio</a>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand logo" href="/">Ferretería El Tornillo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                {% if user.is_authenticated %}
-                   <ul class="navbar-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/acerca/">Acerca de</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contacto/">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <form method="POST" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="nav-link">Cerrar Sesión</button>
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Prueba</a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <form method="POST" action="{% url 'logout' %}" class="form-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger nav-link">Cerrar Sesión</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-primary" href="/auth/login">Iniciar Sesión</a>
+                        </li>
+                    {% endif %}
                 </ul>
-
-                {% else %}
-                   <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/acerca/">Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contacto/">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/login">Iniciar Sesión</a>
-                    </li>
-                </ul>
-                {% endif %}
-
             </div>
         </nav>
     </header>
 
-    <main class="container mt-4">
+    <main class="container my-5">
         <!-- Aquí se mostrará el contenido principal de tus páginas -->
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-light text-center py-3">
+    <footer class="bg-light text-center py-4">
         <!-- Aquí puedes incluir el pie de página de tu sitio -->
-        <p>Derechos de autor &copy; {{ year }} Katlin Chapa</p>
+        <p>&copy; {{ year }} Ferretería El Tornillo. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Agrega los scripts de Bootstrap al final del documento -->
