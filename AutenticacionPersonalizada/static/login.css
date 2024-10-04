@@ -1,0 +1,37 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.icon-container {
+    display: flex;
+    gap: 20px; /* Espacio entre iconos */
+}
+
+.icon-container i {
+    font-size: 48px; /* Tamaño del icono */
+    color: #007bff; /* Color del icono */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animación en hover */
+}
+
+.icon-container i:hover {
+    color: #0056b3; /* Cambia de color en hover */
+    transform: scale(1.2); /* Efecto de agrandamiento en hover */
+}
+
+/* Estilo para texto debajo de los iconos */
+.icon-item {
+    text-align: center;
+}
+
+.icon-item span {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}

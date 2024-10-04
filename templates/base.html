@@ -11,14 +11,15 @@
 
     <!-- REVISAR QUE SON LOS ARCHIVOS -->
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/11079/11079718.png">
-    
+
     <!-- CSS Link -->
     <link rel="stylesheet" href="{% static 'style.css' %}" >
     <link rel="stylesheet" href="{% static 'all.min.css' %}" >
-    <link rel="stylesheet" href="{% static 'boostrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" >
     <link rel="stylesheet" href="{% static 'owl.carousel.min.css' %}" >
     <link rel="stylesheet" href="{% static 'themability_megamenu.css' %}" >
     <link rel="stylesheet" href="{% static 'themability-font.css' %}" >
+
 
 </head>
 
@@ -60,7 +61,8 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right account-link-toggle">
                             <li><a href="/" class="dropdown-item">Registrarse</a></li>
-                            <li><a href="/" class="dropdown-item">Iniciar Sesion</a></li>
+                            <li><a href="/auth/login" class="dropdown-item">Iniciar Sesión</a></li>
+
                         </ul>
                     </div>
 
@@ -2364,20 +2366,11 @@
     <!-- .Footer_Section -->
 
 
-    <!-- Jquery link  -->
-    <script src="./jquery-3.3.1.min.js.descarga"></script>
-    <!-- Bootstrap Bundle with Popper js -->
-    <script src="./bootstrap.min.js.descarga"></script>
-    <!-- Owlcarousel Js Link -->
-    <script src="./owl.carousel.min.js.descarga"></script>
-    <!-- Jquery Js link -->
-    <script src="./theme.js.descarga"></script>
-    <!-- Themability Megamenu Js link -->
-    <script src="./themability_megamenu.js.descarga"></script>
+    
     <!-- wow javascript -->
-    <script src="./wow.min.js.descarga"></script>
+    <script src="{% static 'wow.min.js.descarga' %}"></script>
     <script>new WOW().init();</script>
-    <link href="./animate.min.css" rel="stylesheet">
+    
 
 
 </body></html>
