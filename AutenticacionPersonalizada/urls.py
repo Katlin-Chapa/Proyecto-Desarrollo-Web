@@ -8,6 +8,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('api/login/', InicioPersonalizado.as_view(), name='custom_login'),
     
-  
     path('', RedirectView.as_view(url='/login/')),
 ]

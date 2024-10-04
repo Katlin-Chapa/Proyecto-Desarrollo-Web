@@ -56,13 +56,12 @@
 
                     </div>
                     <div id="header_ac" class="dropdown">
-                        <a href="/" class="dropdown-toggle btn-link show" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="">Inicio de Sesion</span><i class="fa-regular fa-circle-user"></i>
+                        <a href="{% url 'login' %}" class="dropdown-toggle btn-link show" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="">Inicio de Sesión</span><i class="fa-regular fa-circle-user"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right account-link-toggle">
-                            <li><a href="/" class="dropdown-item">Registrarse</a></li>
-                            <li><a href="/auth/login" class="dropdown-item">Iniciar Sesión</a></li>
-
+                            <li><a href="templates/register.html" class="dropdown-item">Registrarse</a></li>
+                            <li><a href="{% url 'login' %}" class="dropdown-item">Iniciar Sesión</a></li>
                         </ul>
                     </div>
 
