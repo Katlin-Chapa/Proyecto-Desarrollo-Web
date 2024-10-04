@@ -1,63 +1,2383 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Ferretería El Tornillo{% endblock %}</title>
 
-    <!-- Enlace a los estilos -->
-    <link href="{% static 'estilos.css' %}" rel="stylesheet">
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
+    
 
-    <!-- Iconos de Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Inicio  </title>
+
+    <!-- REVISAR QUE SON LOS ARCHIVOS -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/11079/11079718.png">
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'style.css' %}" >
+    <link rel="stylesheet" href="{% static 'all.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'boostrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'owl.carousel.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'themability_megamenu.css' %}" >
+    <link rel="stylesheet" href="{% static 'themability-font.css' %}" >
+
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logo" href="/">Ferretería El Tornillo</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/acerca/">Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contacto/">Contacto</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <form method="POST" action="{% url 'logout' %}" class="form-inline">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-danger nav-link">Cerrar Sesión</button>
-                            </form>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-outline-primary" href="/auth/login">Iniciar Sesión</a>
-                        </li>
-                    {% endif %}
-                </ul>
+
+<body class="home_page">
+    
+    <!-- Header_Top-->
+    <nav id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 top-left">
+                    <div class="contact-info">
+                        <a href="tel:+502 50189232">
+                            <i class="fa fa-phone"></i>
+                            <span class="">+502 50189232</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 top-right">
+                    <div class="pull-left">
+                    </div>
+                    <div class="pull-left">
+                        <form method="post" id="form-currency">
+                            <div class="dropdown btn-group">
+                                <a href="/" data-bs-toggle="dropdown" class="dropdown-toggle btn-link show" aria-expanded="false">
+
+                                    <span class="drop-text">Moneda</span>
+                                    <span class="symbol">Quetzal guatemalteco</span>
+
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                            </div>
+                            <input type="hidden" name="code" value=""> <input type="hidden" name="redirect" value="">
+                        </form>
+
+                    </div>
+                    <div id="header_ac" class="dropdown">
+                        <a href="/" class="dropdown-toggle btn-link show" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="">Inicio de Sesion</span><i class="fa-regular fa-circle-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right account-link-toggle">
+                            <li><a href="/" class="dropdown-item">Registrarse</a></li>
+                            <li><a href="/" class="dropdown-item">Iniciar Sesion</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="top-links" class="nav pull-right d-none">
+                        <ul class="list-inline">
+                            <li class="hidden">
+                                <a href="/" id="wishlist-total" title="Wish List (2)">
+                                    <i class="fa fa-heart"></i>
+                                    <span class="hidden-xs hidden-sm hidden-md">Lista de Deseos (2)</span>
+                                </a>
+                            </li>
+                            <li class="hidden">
+                                <a href="/" title="Shopping Cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="hidden-xs hidden-sm hidden-md">Carrito de Compras</span>
+                                </a>
+                            </li>
+                            <li class="hidden">
+                                <a href="/" title="Checkout">
+                                    <i class="fa fa-share"></i>
+                                    <span class="hidden-xs hidden-sm hidden-md">Realizar el Pago</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </nav>
+        </div>
+    </nav>
+    <!-- End Header_Top -->
+
+    <!-- Nav_bar -->
+    <header class="">
+        <div class="container">
+            <div class="row header-inner align-items-center sub_sub_menu">
+                <div class="col-xl-2 col-md-6 header-left">
+                    <div id="logo"> <a href="/">
+                            <img src="./logo.png" title="Your Store" alt="Your Store" class="img-fluid">
+                        </a> </div>
+                </div>
+                
+                <div class="header-center text-end col-xl-7">
+                    <div class="themability_megamenu-style-dev">
+                        <div class="responsive themability_default">
+
+                            <nav class="navbar-default">
+                                <div class=" container-themability_megamenu horizontal ">
+                                    <div class="navbar-header">
+                                        <button type="button" id="show-themability_megamenu" data-toggle="collapse" class="navbar-toggle">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+
+                                    <div class="themability_megamenu-wrapper megamenu_typeheader">
+
+                                        <span id="remove-themability_megamenu" class="fa-solid fa-xmark"></span>
+
+                                        <div class="themability_megamenu-pattern">
+                                            <div class="container">
+                                                <ul class="themability_megamenu" data-megamenuid="31" data-transition="slide" data-animationtime="500">
+
+                                                    <li class="home">
+                                                        <a href="/">
+                                                            <span><strong>Inicio</strong></span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="with-sub-menu click">
+                                                        <p class="close-menu"></p>
+                                                        <a href="/" class="clearfix">
+                                                            <strong>
+                                                                Tienda
+                                                            </strong>
+
+                                                            <b class="fa fa-angle-down"></b>
+                                                        </a>
+                                                        <div class="sub-menu" style="width: 900px; display: none;">
+                                                            <div class="content" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="categories hot">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-3 static-menu">
+                                                                                    <div class="menu">
+                                                                                        <ul>
+                                                                                            <li><a href="/" class="main-menu">Wrenches</a>
+                                                                                                <ul>
+                                                                                                    <li><a href="/">Plumbing Tools</a></li>
+                                                                                                    <li><a href="/">Lineman’s pliers</a></li>
+                                                                                                    <li><a href="/">Tape measure</a></li>
+                                                                                                    <li><a href="/">Diagonal pliers</a></li>
+                                                                                                    <li><a href="/">Power Tools</a></li>
+                                                                                                    <li><a href="/">Measuring Tools</a></li>
+                                                                                                    <li><a href="/">Clamps</a></li>
+                                                                                                </ul>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-3 static-menu">
+                                                                                    <div class="menu">
+                                                                                        <ul>
+                                                                                            <li><a href="/" class="main-menu">Carpinteria</a>
+                                                                                                <ul>
+                                                                                                    <li><a href="/">Air Tools</a></li>
+                                                                                                    <li><a href="/">Chainsaw tool</a></li>
+                                                                                                    <li><a href="/">Power Tools</a></li>
+                                                                                                    <li><a href="/">Tool Belts</a></li>
+                                                                                                    <li><a href="/">Concrete Tools</a></li>
+                                                                                                    <li><a href="/">Drywall Tools</a></li>
+                                                                                                </ul>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-3 static-menu">
+                                                                                    <div class="menu">
+                                                                                        <ul>
+                                                                                            <li><a href="/" class="main-menu">Drywall Anchors</a>
+                                                                                                <ul>
+                                                                                                    <li><a href="/">Gardening Tools</a></li>
+                                                                                                    <li><a href="/">Fireplace Tools</a></li>
+                                                                                                </ul>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-3 static-menu">
+                                                                                    <div class="menu">
+                                                                                        <ul>
+                                                                                            <li><a href="/" class="main-menu">Accesorios</a>
+                                                                                                <ul>
+                                                                                                    <li><a href="/">Drills</a></li>
+                                                                                                    <li><a href="/">Ladders</a></li>
+                                                                                                    <li><a href="/">Plunger tool</a></li>
+                                                                                                    <li><a href="/">Measuring Tools</a></li>
+                                                                                                </ul>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="border"></div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="html ">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="link"><img alt="" class="img-responsive mw-100" src="./1.jpg"></div>
+                                                                                </div>
+
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="link"><img alt="" class="img-responsive mw-100" src="./2.jpg"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="with-sub-menu click">
+                                                        <p class="close-menu"></p>
+                                                        <a href="/" class="clearfix">
+                                                            <strong>
+                                                                Categories
+                                                            </strong>
+                                                            <span class="labeloffer"></span>
+                                                            <b class="fa fa-angle-down"></b>
+                                                        </a>
+
+                                                        <div class="sub-menu" style="width: 900px; display: none;">
+                                                            <div class="content" style="display: none;">
+                                                                <div class="row sub_sub_menu">
+                                                                    <div class="col-sm-4">
+                                                                        <div class="megamenu-product-list">
+                                                                            <span class="title-submenu">Special Product</span>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./10.jpg" alt="Cordless drill" title="Cordless drill" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Cordless drill</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    <span class="price-new">$482.00</span>
+                                                                                                    <span class="price-old">$602.00</span>
+
+                                                                                                    <span class="price-tax">$400.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./12.jpg" alt="Hammer tool" title="Hammer tool" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Hammer tool</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    <span class="price-new">$98.00</span>
+                                                                                                    <span class="price-old">$122.00</span>
+
+                                                                                                    <span class="price-tax">$80.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./14.jpg" alt="Monkeywrench" title="Monkeywrench" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Monkeywrench</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    <span class="price-new">$110.00</span>
+                                                                                                    <span class="price-old">$122.00</span>
+
+                                                                                                    <span class="price-tax">$90.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <ul class="subcategory ">
+                                                                            <li>
+                                                                                <a href="/" class="title-submenu ">Martillos</a>
+                                                                                <div class="row sub_sub_menu">
+                                                                                    <div class="col-sm-12 hover-menu">
+                                                                                        <div class="menu">
+                                                                                            <ul>
+                                                                                                <li><a href="/" class="main-menu">Axes</a></li>
+                                                                                                <li><a href="/" class="main-menu">Carpeting Tools</a></li>
+                                                                                                <li><a href="/" class="main-menu">Grout Removal Tools</a></li>
+                                                                                                <li><a href="/" class="main-menu">Satchel<b class="fa fa-angle-right"></b></a>
+                                                                                                    <ul>
+                                                                                                        <li><a href="/">Wallpapering Tools</a></li>
+                                                                                                        <li><a href="/">Wood Cutting Tools</a></li>
+                                                                                                    </ul>
+                                                                                                </li>
+                                                                                                <li><a href="/" class="main-menu">Saws</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <img src="./category_banner1.jpg" alt="" class="img-responsive mw-100">
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <ul class="subcategory ">
+                                                                            <li>
+                                                                                <a href="/" class="title-submenu ">Accesorios</a>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12 hover-menu">
+                                                                                        <div class="menu">
+                                                                                            <ul>
+                                                                                                <li><a href="/" class="main-menu">Drills</a></li>
+                                                                                                <li><a href="/" class="main-menu">Ladders</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <img src="./category_banner1.jpg" alt="" class="img-responsive mw-100">
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="with-sub-menu click">
+                                                        <p class="close-menu"></p>
+                                                        <a href="/" class="clearfix">
+                                                            <strong>
+                                                                Productos
+                                                            </strong>
+                                                            <span class="labelhot"></span>
+                                                            <b class="fa fa-angle-down"></b>
+                                                        </a>
+
+                                                        <div class="sub-menu" style="display: none; width: 900px; right: auto; left: 0px;">
+                                                            <div class="content" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col-sm-4">
+                                                                        <div class="megamenu-product-list">
+                                                                            <span class="title-submenu">Productos Populares</span>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./12.jpg" alt="Cordless drill" title="Cordless drill" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Cordless drill</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    <span class="price-new">$482.00</span>
+                                                                                                    <span class="price-old">$602.00</span>
+
+                                                                                                    <span class="price-tax">$400.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./14.jpg" alt="Hammer tool" title="Hammer tool" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Hammer tool</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    <span class="price-new">$98.00</span>
+                                                                                                    <span class="price-old">$122.00</span>
+
+                                                                                                    <span class="price-tax">$80.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./15.jpg" alt="Monkeywrench" title="Monkeywrench" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Monkeywrench</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    <span class="price-new">$110.00</span>
+                                                                                                    <span class="price-old">$122.00</span>
+
+                                                                                                    <span class="price-tax">$90.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="megamenu-product-list">
+                                                                            <span class="title-submenu">Bestseller Product</span>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./17.jpg" alt="Impact Wrench" title="Impact Wrench" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Impact Wrench</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    $122.00
+
+                                                                                                    <span class="price-tax">$100.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./6.jpg" alt="Caulking gun" title="Caulking gun" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Caulking gun</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    $122.00
+
+                                                                                                    <span class="price-tax">$100.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./2(1).jpg" alt="Stepladder tool" title="Stepladder tool" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Stepladder tool</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    $1,202.00
+
+                                                                                                    <span class="price-tax">$1,000.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="megamenu-product-list">
+                                                                            <span class="title-submenu">Latest Product</span>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./9.jpg" alt="Backsaw tool" title="Backsaw tool" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Backsaw tool</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    $20.00
+
+                                                                                                    <span class="price-tax">$20.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./10.jpg" alt="Plunger tool" title="Plunger tool" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Plunger tool</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    $241.99
+                                                                                                    <span class="price-tax">$199.99</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 ">
+                                                                                    <div class="menu-product-thumb">
+                                                                                        <div class="image">
+                                                                                            <a href="/">
+                                                                                                <img src="./13.jpg" alt="Impact Wrench" title="Impact Wrench" class="img-responsive mw-100">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="product-description">
+                                                                                            <div class="caption">
+                                                                                                <h4><a href="/">Impact Wrench</a></h4>
+                                                                                                <div class="rating">
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                    <span class="fa fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+                                                                                                </div>
+
+                                                                                                <p class="price">
+                                                                                                    $122.00
+
+                                                                                                    <span class="price-tax">$100.00</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="with-sub-menu click">
+                                                        <p class="close-menu"></p>
+                                                        <a href="/" class="clearfix">
+                                                            <strong>
+                                                                Pages
+                                                            </strong>
+
+                                                            <b class="fa fa-angle-down"></b>
+                                                        </a>
+                                                        <div class="sub-menu" style="width: 250px; display: none;">
+                                                            <div class="content" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <ul class="route  html-link">
+                                                                            <li><a href="/" class="main-menu">Acerca de Nosotros</a></li>
+                                                                            <li><a href="/" class="main-menu">Contactanos</a></li>
+                                                                            <li><a href="/" class="main-menu">Ubicacion</a></li>
+                                                                            <li><a href="/" class="main-menu">Ofertas</a></li>
+                                                                            <li><a href="/" class="main-menu">Mi Cuenta</a></li>
+                                                                            <li><a href="/" class="main-menu">Historial de Compras</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="">
+                                                        <p class="close-menu"></p>
+                                                        <a href="/" class="clearfix">
+                                                            <strong>
+                                                                Blog
+                                                            </strong>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div><div class="header-right col-xl-3 col-md-6">
+                    <div class="search-content">
+                        <div class="search-btn-outer d-lg-none">
+                            <i class="icon-search"></i>
+                        </div>
+                        <div class="header-search">
+                            <div id="themabilitySearch" class="input-group themability-search">
+                                <input type="text" name="search" value="" placeholder="Search..." class="form-control input-lg ui-autocomplete-input" autocomplete="off">
+                                <span class="btn-search input-group-btn">
+                                    <button type="button" class="btn btn-primary btn-lg"><i class="icon-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="header-cart" class="cart-content">
+                        <div id="cart" class="dropdown d-grid btn-group btn-block">
+                            <button type="button" data-bs-toggle="dropdown" class="btn btn-inverse btn-block dropdown-toggle show">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span id="cart-total" class="new">2<span class="d-none">2</span></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right header-cart-toggle ">
+                                <li class="cart-content-product">
+                                    <table class="table table-sm table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center product-cart-thumb">
+                                                    <a href="/">
+                                                        <img src="./7.jpg" width="90" alt="Backsaw tool" title="Backsaw tool" class="img-thumbnail">
+                                                    </a>
+                                                </td>
+                                                <td class="text-start product-cart-details">
+                                                    <a href="/" class="product-item-name">Screwdriver</a>
+                                                    <div class="product-cart-info">
+                                                        <span class="product-cart-qty">1 x </span>
+                                                        <span class="product-cart-price">122.00$</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end product-cart-close">
+                                                    <form method="post" data-oc-toggle="ajax" data-oc-load="" data-oc-target="#header-cart">
+                                                        <input type="hidden" name="key" value="10">
+                                                        <button type="button" data-bs-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center product-cart-thumb">
+                                                    <a href="/">
+                                                        <img src="./9.jpg" width="90" alt="Backsaw tool" title="Backsaw tool" class="img-thumbnail">
+                                                    </a>
+                                                </td>
+                                                <td class="text-start product-cart-details">
+                                                    <a href="/" class="product-item-name">Electric drill</a>
+                                                    <div class="product-cart-info">
+                                                        <span class="product-cart-qty">1 x </span>
+                                                        <span class="product-cart-price">1,202.00$</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end product-cart-close">
+                                                    <form method="post" data-oc-toggle="ajax" data-oc-load="" data-oc-target="#header-cart">
+                                                        <input type="hidden" name="key" value="10">
+                                                        <button type="button" data-bs-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li>
+                                    <div>
+                                        <table class="table table-sm table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-start"><strong>Sub-Total</strong></td>
+                                                    <td class="text-end">1,100.00$</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start"><strong>Eco Tax (-2.00)</strong></td>
+                                                    <td class="text-end">4.00$</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start"><strong>VAT (20%)</strong></td>
+                                                    <td class="text-end">220.00$</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start"><strong>Total</strong></td>
+                                                    <td class="text-end">1,324.00$</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="text-center product-cart-button">
+                                            <a href="/" class="btn-primary cart-btn addtocart-btn"><i class="fa-solid fa-cart-shopping d-none"></i> View Cart</a>
+                                            &nbsp;&nbsp;&nbsp;<a href="/" class="btn-primary cart-btn checkout-btn"><i class="fa-solid fa-share d-none"></i> Checkout</a>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
+    <!-- End Nav_bar -->
 
-    <main class="container my-5">
-        <!-- Aquí se mostrará el contenido principal de tus páginas -->
-        {% block content %}{% endblock %}
-    </main>
+    <!-- Banner_Slider -->
+    <div class="container-fluid p-0">
+        <div class="banner-slider owl-carousel owl-theme owl-loaded owl-drag">
+            
+            
+        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-2686px, 0px, 0px); transition: 0.25s; width: 8058px;"><div class="owl-item cloned" style="width: 1343px;"><div class="item bann-img">
+                <div class="bg-img bg-img-2">
+                    <img src="./mainbanner1.jpg" alt="">
+                </div>
+            </div></div><div class="owl-item cloned" style="width: 1343px;"><div class="item bann-img">
+                <div class="bg-img bg-img-3">
+                    <img src="./mainbanner2.jpg" alt="">
+                </div>
+            </div></div><div class="owl-item active" style="width: 1343px;"><div class="item bann-img">
+                <div class="bg-img bg-img-2">
+                    <img src="./mainbanner1.jpg" alt="">
+                </div>
+            </div></div><div class="owl-item" style="width: 1343px;"><div class="item bann-img">
+                <div class="bg-img bg-img-3">
+                    <img src="./mainbanner2.jpg" alt="">
+                </div>
+            </div></div><div class="owl-item cloned" style="width: 1343px;"><div class="item bann-img">
+                <div class="bg-img bg-img-2">
+                    <img src="./mainbanner1.jpg" alt="">
+                </div>
+            </div></div><div class="owl-item cloned" style="width: 1343px;"><div class="item bann-img">
+                <div class="bg-img bg-img-3">
+                    <img src="./mainbanner2.jpg" alt="">
+                </div>
+            </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+    </div>
+    <!-- .Banner_Slider -->
 
-    <footer class="bg-light text-center py-4">
-        <!-- Aquí puedes incluir el pie de página de tu sitio -->
-        <p>&copy; {{ year }} Ferretería El Tornillo. Todos los derechos reservados.</p>
+    <!-- Shop_Categories -->
+    <div class="shop-categories">
+        <div class="container">
+            <div class="heading-cate page-title">
+                <h1 class="text-center">
+                    Shop By Categories
+                </h1>
+            </div>
+            <div class="main-box owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                
+                
+                
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 1344px;"><div class="owl-item active" style="width: 417.667px; margin-right: 30px;"><div class="item box">
+                    <div class="shop-card">
+                        <img src="./1.png" class="shop-1" alt="...">
+                        <div class="card-body plier">
+                            <h2 class="card-title">Pliers</h2>
+                            <p class="card-text">Shop Laptop feature only the b...</p>
+                            <a href="/" class="btn plier-btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item active" style="width: 417.667px; margin-right: 30px;"><div class="item box">
+                    <div class="shop-card">
+                        <img src="./2.png" class="shop-1" alt="...">
+                        <div class="card-body plier">
+                            <h2 class="card-title">Sanding Tools</h2>
+                            <p class="card-text">Shop laptop feature only the b...</p>
+                            <a href="/" class="btn plier-btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item active" style="width: 417.667px; margin-right: 30px;"><div class="item box">
+                    <div class="shop-card">
+                        <img src="./3.png" class="shop-1" alt="...">
+                        <div class="card-body plier">
+                            <h2 class="card-title">Drywall anchors</h2>
+                            <p class="card-text">Example of category description...</p>
+                            <a href="/" class="btn plier-btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next disabled"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+            <div class="row fetura d-flex">
+                <div class="free-shipping col-lg-3 col-md-6 col-sm-6">
+                    <div class="circle">
+                        <i class="icon-shipping"></i>
+                    </div>
+                    <div class="circ-text">
+                        <p>Free shipping</p>
+                        <span>On order over $150</span>
+                    </div>
+                </div>
+                <div class="free-shipping col-lg-3 col-md-6 col-sm-6">
+                    <div class="circle">
+                        <i class="icon-wallet"></i>
+                    </div>
+                    <div class="circ-text">
+                        <p>Cash On Delivery</p>
+                        <span>100% money back guarantee</span>
+                    </div>
+                </div>
+                <div class="free-shipping col-lg-3 col-md-6 col-sm-6">
+                    <div class="circle">
+                        <i class="icon-gift"></i>
+                    </div>
+                    <div class="circ-text">
+                        <p>Special Gift Card</p>
+                        <span>Offer special bonuses with gift</span>
+                    </div>
+                </div>
+                <div class="free-shipping col-lg-3 col-md-6 col-sm-6">
+                    <div class="circle">
+                        <i class="icon-customer-service"></i>
+                    </div>
+                    <div class="circ-text">
+                        <p>24/7 customer service</p>
+                        <span>Call us 24/7 at 123-456-789</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .Shop_Categories -->
+
+    <!-- Top_Product -->
+    <div class="product-section mt wow fadeInUp" style="visibility: hidden; animation-name: none;">
+        <div class="container">
+            <div class="product-hedaing page-title">
+                <h1 class="text-center">
+                    Top Product
+                </h1>
+                <div class="row">
+                    <div class="product-btn list-group list-group-horizontal" id="list-tab" role="tablist">
+                        <a class="list-group-item-action btn-click active" id="list-home-list" data-bs-toggle="list" href="/list-home" role="tab" aria-controls="list-home">Featured</a>
+                        <a class="list-group-item-action btn-click" id="list-profile-list" data-bs-toggle="list" href="/list-profile" role="tab" aria-controls="list-profile">Latest</a>
+                        <a class="list-group-item-action btn-click" id="list-messages-list" data-bs-toggle="list" href="/list-messages" role="tab" aria-controls="list-messages">Bestseller</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active " id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                            <div class="product-items owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                                
+                                
+                                
+                                
+                                
+                                
+                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 2015px;"><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./6.jpg" class="card-img-top" alt="..."></a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon">
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Backsaw Tool</h6>
+                                                </a>
+                                                <p class="card-text">$20.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./1(1).jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i>
+                                                </span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Monykeywrench</h6>
+                                                </a>
+                                                <p class="card-text">$110.00 <span class="text-decoration-line-through text-muted ms-3">$122.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./12.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon">
+                                                    <i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Caulking Gun</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./9.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Electric Drill</h6>
+                                                </a>
+                                                <p class="card-text">$1,202.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./16.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Cordless Drill</h6>
+                                                </a>
+                                                <p class="card-text">$482.00 <span class="text-decoration-line-through text-muted ms-3">$602.00</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./14.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Coping Saw</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./17.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Hammer Tool</h6>
+                                                </a>
+                                                <p class="card-text">$98.00 <span class="text-decoration-line-through text-muted ms-3">$122.00</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./7.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Screwdriver</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./8.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Soldering Iron</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./6.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Spirit Level</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./11.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Stepladder Tool</h6>
+                                                </a>
+                                                <p class="card-text">$1,202.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./5.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Sterilizers</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+                        </div>
+                        <div class="tab-pane fade " id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                            <div class="latest product-items owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                                
+                                
+                                
+                                
+                                
+                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all;"><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./6.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Backsaw Tool</h6>
+                                                </a>
+                                                <p class="card-text">$20.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./14.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Plunger Tool</h6>
+                                                </a>
+                                                <p class="card-text">$241.99</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./13.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Impact Wrench</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./12.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Caulking Gun</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./11.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Stepladder Tool</h6>
+                                                </a>
+                                                <p class="card-text">$1,202.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./10.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Pipe Wrench</h6>
+                                                </a>
+                                                <p class="card-text">$2,000.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./9.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Electric Drill</h6>
+                                                </a>
+                                                <p class="card-text">$1,202.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./16.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Cordless Drill</h6>
+                                                </a>
+                                                <p class="card-text">$20.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./1(1).jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Monkeywrench</h6>
+                                                </a>
+                                                <p class="card-text">$110.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./8.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Soldering Iron</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+                        </div>
+                        <div class="tab-pane fade " id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                            <div class="bestseller product-items owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                                
+                                
+                                
+                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all;"><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./13.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Impact Wrench</h6>
+                                                </a>
+                                                <p class="card-text">$122.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./12.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Caulking Gun</h6>
+                                                </a>
+                                                <p class="card-text">$20.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="owl-item"><div class="item product">
+                                    <div class="col col-xs-12 single-column">
+                                        <div class="card product-card h-100 border-0">
+                                            <a href="/">
+                                                <img src="./11.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="button-group">
+                                                <button>
+                                                    <i class="icon-shopping-bag"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-like"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-eye"></i>
+                                                </button>
+                                                <button>
+                                                    <i class="icon-shuffle-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <span class="star-icon"><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                                            fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                                <a href="/">
+                                                    <h6 class="card-text m-0">Stepladder tool</h6>
+                                                </a>
+                                                <p class="card-text">$1,202.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next disabled"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .Top_Product -->
+
+    <!-- Testimonial_Section -->
+    <div class="testimonial-section wow fadeInUp" style="visibility: hidden; animation-name: none;">
+        <div class="container">
+            <div class="testimonial-content">
+                <div class="testimonial-header page-title white-title">
+                    <h1>Testimonial</h1>
+                </div>
+                <div class="testimonial-items owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                    
+                    
+                    
+                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 3879px;"><div class="owl-item active" style="width: 1283px; margin-right: 10px;"><div class="item">
+                        <div class="first-person">
+                            <div class="person-face">
+                                <img src="./1(2).jpg" alt="">
+                            </div>
+                            <div class="person-info">
+                                <div class="person-name">Mariya Lorem</div>
+                                <div class="person-sr-name">Customer</div>
+                            </div>
+                            <div class="person-content">
+                                <i class="fa-solid fa-quote-left"></i>
+                                <p>
+                                    Lorem ipsum dolor sit, amet
+                                    consectetur adipisicing elit. Ea
+                                    sunt dolor necessitatibus doloribus, fuga, rem natus earum
+                                    autem officiis nam voluptatem.
+                                </p>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item" style="width: 1283px; margin-right: 10px;"><div class="item">
+                        <div class="first-person">
+                            <div class="person-face">
+                                <img src="./3.jpg" alt="">
+                            </div>
+                            <div class="person-info">
+                                <div class="person-name">Noelle Salar</div>
+                                <div class="person-sr-name">Customer</div>
+                            </div>
+                            <div class="person-content">
+                                <i class="fa-solid fa-quote-left"></i>
+                                <p>
+                                    Lorem ipsum dolor sit, amet
+                                    consectetur adipisicing elit. Ea
+                                    sunt dolor necessitatibus doloribus, fuga, rem natus earum
+                                    autem officiis nam voluptatem.
+                                </p>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item" style="width: 1283px; margin-right: 10px;"><div class="item">
+                        <div class="first-person">
+                            <div class="person-face">
+                                <img src="./2(2).jpg" alt="">
+                            </div>
+                            <div class="person-info">
+                                <div class="person-name">Smith Anthor</div>
+                                <div class="person-sr-name">Customer</div>
+                            </div>
+                            <div class="person-content">
+                                <i class="fa-solid fa-quote-left"></i>
+                                <p>
+                                    Lorem ipsum dolor sit, amet
+                                    consectetur adipisicing elit. Ea
+                                    sunt dolor necessitatibus doloribus, fuga, rem natus earum
+                                    autem officiis nam voluptatem.
+                                </p>
+                            </div>
+                        </div>
+                    </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- .Testimonial_Section -->
+
+    <!-- Special_Product -->
+    <div class="special-section wow fadeInUp" style="visibility: hidden; animation-name: none;">
+        <div class="container">
+            <div class="special-hedaing page-title">
+                <h1 class="text-center  ">
+                    Specials
+                </h1>
+            </div>
+            <div class="special-items owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                
+                
+                
+                
+                
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 1679px;"><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                    <div class="single-column">
+                        <div class="card product-card h-100 border-0">
+                            <a href="/">
+                                <img src="./16.jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="button-group sp">
+                                <button>
+                                    <i class="icon-shopping-bag"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-like"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-eye"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-shuffle-arrows"></i>
+                                </button>
+                            </div>
+                            <div class="card-body product-detail">
+                                <span class="star-icon">
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"> </i>
+                                    <i class="fa-regular fa-star"></i><i class="fa-regular
+                                        fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                <a href="/">
+                                    <h6 class="card-text m-0">Cordless drill</h6>
+                                </a>
+                                <p class="card-text">$120.00 <span class="text-decoration-line-through text-muted ms-3">$180.00</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                    <div class="single-column">
+                        <div class="card product-card h-100 border-0">
+                            <a href="/">
+                                <img src="./17.jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="button-group sp">
+                                <button>
+                                    <i class="icon-shopping-bag"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-like"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-eye"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-shuffle-arrows"></i>
+                                </button>
+                            </div>
+                            <div class="card-body product-detail">
+                                <span class="star-icon"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                        fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                <a href="/">
+                                    <h6 class="card-text m-0">Hammer tool</h6>
+                                </a>
+                                <p class="card-text">$100.00 <span class="text-decoration-line-through text-muted ms-3">$130.00</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                    <div class="single-column">
+                        <div class="card product-card h-100 border-0">
+                            <a href="/">
+                                <img src="./1(1).jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="button-group sp">
+                                <button>
+                                    <i class="icon-shopping-bag"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-like"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-eye"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-shuffle-arrows"></i>
+                                </button>
+                            </div>
+                            <div class="card-body product-detail">
+                                <span class="star-icon"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                        fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                <a href="/">
+                                    <h6 class="card-text m-0">Monkeywrench</h6>
+                                </a>
+                                <p class="card-text">$80.00 <span class="text-decoration-line-through text-muted ms-3">$110.00</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item active" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                    <div class="single-column">
+                        <div class="card product-card h-100 border-0">
+                            <a href="/">
+                                <img src="./2(1).jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="button-group sp">
+                                <button>
+                                    <i class="icon-shopping-bag"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-like"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-eye"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-shuffle-arrows"></i>
+                                </button>
+                            </div>
+                            <div class="card-body product-detail">
+                                <span class="star-icon"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                        fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                <a href="/">
+                                    <h6 class="card-text m-0">Rotary Hammer</h6>
+                                </a>
+                                <p class="card-text">$50.00 <span class="text-decoration-line-through text-muted ms-3">$80.00</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item" style="width: 305.75px; margin-right: 30px;"><div class="item product">
+                    <div class="single-column">
+                        <div class="card product-card h-100 border-0">
+                            <a href="/">
+                                <img src="./3(1).jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="button-group sp">
+                                <button>
+                                    <i class="icon-shopping-bag"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-like"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-eye"></i>
+                                </button>
+                                <button>
+                                    <i class="icon-shuffle-arrows"></i>
+                                </button>
+                            </div>
+                            <div class="card-body product-detail">
+                                <span class="star-icon"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular
+                                        fa-star"></i><i class="fa-regular fa-star"></i></span>
+                                <a href="/">
+                                    <h6 class="card-text m-0">Tape measure</h6>
+                                </a>
+                                <p class="card-text">$110.00 <span class="text-decoration-line-through text-muted ms-3">$150.00</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+        </div>
+    </div>
+    <!-- .Special_Product -->
+
+    <!-- Newsletter_Section -->
+    <div class="news-section wow fadeInUp" style="visibility: hidden; animation-name: none;">
+        <div class="container-fluid p-0">
+            <div class="news-content ">
+                <div class="container">
+                    <div class="news-info row align-items-center">
+                        <div class="col-lg-6 d-flex align-items-center mb-md-3 mb-sm-4">
+                            <div class="email-icon">
+                                <i class="icon-newslatter"></i>
+                            </div>
+                            <div class="news-discount">
+                                <div class="news-heading">
+                                    <h3>Subscribe To Newsletter</h3>
+                                </div>
+                                <div class="news-text">
+                                    Get free 20% discount for all products on your first order.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <form action="/">
+                                <div class=" subscribe input-group mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" placeholder="Enter Your E-mail..." aria-label="Recipient&#39;s username" aria-describedby="basic-addon2">
+                                    <button class="btn-primary" id="basic-addon2">Suscribete</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .Newsletter_Section -->
+
+    <!-- Blog_Section -->
+    <div class="blog-section wow fadeInUp" style="visibility: hidden; animation-name: none;">
+        <div class="container mt-5">
+            <div class="blog-hedaing page-title">
+                <h1 class="text-center ">
+                    Blogs
+                </h1>
+            </div>
+            <div class="blogs-items owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                
+                
+                
+                
+                
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 3358px;"><div class="owl-item active" style="width: 641.5px; margin-right: 30px;"><div class="item">
+                    <div class="blog-content col-xs-12">
+                        <div class="blog-info row d-flex align-items-center">
+                            <div class="blog-left col-md-6">
+                                <div class="blog-img">
+                                    <img src="./2(3).png" alt="">
+                                    <div class="blog-day">
+                                        <div class="blog-date">22</div>
+                                        <div class="blog-month">Nov</div>
+                                    </div>
+                                    <div class="post-hover">
+                                        <a class="zoom" href="/"><i class="fa-solid
+                                                fa-magnifying-glass-plus"></i></a>
+                                        <a class="read-link" href="/"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-right col-md-6">
+                                <div class="blog-text">
+                                    <div class="blog-icon">
+                                        <a href="/">
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                            <span>0 Comments</span>
+                                        </a>
+                                    </div>
+                                    <div class="blog-title">
+                                        <a href="/">
+                                            <h4>WHERE CAN I GET SOME ?</h4>
+                                        </a>
+                                        <div class="blog-details">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Laudantium, voluptas dicta! Veritatis beatae cum ....
+                                        </div>
+                                        <div class="blog-btn btn-primary">
+                                            <a href="/">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item active" style="width: 641.5px; margin-right: 30px;"><div class="item">
+                    <div class="blog-content col-xs-12">
+                        <div class="blog-info row d-flex align-items-center">
+                            <div class="blog-left col-md-6">
+                                <div class="blog-img">
+                                    <img src="./3(2).png" alt="">
+                                    <div class="blog-day">
+                                        <div class="blog-date">22</div>
+                                        <div class="blog-month">Nov</div>
+                                    </div>
+                                    <div class="post-hover">
+                                        <a class="zoom" href="/"><i class="fa-solid
+                                                fa-magnifying-glass-plus"></i></a>
+                                        <a class="read-link" href="/"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-right col-md-6">
+                                <div class="blog-text">
+                                    <div class="blog-icon">
+                                        <a href="/">
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                            <span>0 Comments</span>
+                                        </a>
+                                    </div>
+                                    <div class="blog-title">
+                                        <a href="/">
+                                            <h4>MANY PUBLISHING PACKAGES</h4>
+                                        </a>
+                                        <div class="blog-details">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Laudantium, voluptas dicta! Veritatis beatae cum ....
+                                        </div>
+                                        <div class="blog-btn btn-primary">
+                                            <a href="/">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item" style="width: 641.5px; margin-right: 30px;"><div class="item">
+                    <div class="blog-content col-xs-12">
+                        <div class="blog-info row d-flex align-items-center">
+                            <div class="blog-left col-md-6">
+                                <div class="blog-img">
+                                    <img src="./1(3).png" alt="">
+                                    <div class="blog-day">
+                                        <div class="blog-date">22</div>
+                                        <div class="blog-month">Nov</div>
+                                    </div>
+                                    <div class="post-hover">
+                                        <a class="zoom" href="/"><i class="fa-solid
+                                                fa-magnifying-glass-plus"></i></a>
+                                        <a class="read-link" href="/"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-right col-md-6">
+                                <div class="blog-text">
+                                    <div class="blog-icon">
+                                        <a href="/">
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                            <span>0 Comments</span>
+                                        </a>
+                                    </div>
+                                    <div class="blog-title">
+                                        <a href="/">
+                                            <h4>THERE ARE MANY VARIATIONS</h4>
+                                        </a>
+                                        <div class="blog-details">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Laudantium, voluptas dicta! Veritatis beatae cum ....
+                                        </div>
+                                        <div class="blog-btn btn-primary">
+                                            <a href="/">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item" style="width: 641.5px; margin-right: 30px;"><div class="item">
+                    <div class="blog-content col-xs-12">
+                        <div class="blog-info row d-flex align-items-center">
+                            <div class="blog-left col-md-6">
+                                <div class="blog-img">
+                                    <img src="./5.png" alt="">
+                                    <div class="blog-day">
+                                        <div class="blog-date">22</div>
+                                        <div class="blog-month">Nov</div>
+                                    </div>
+                                    <div class="post-hover">
+                                        <a class="zoom" href="/"><i class="fa-solid
+                                                fa-magnifying-glass-plus"></i></a>
+                                        <a class="read-link" href="/"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-right col-md-6">
+                                <div class="blog-text">
+                                    <div class="blog-icon">
+                                        <a href="/">
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                            <span>0 Comments</span>
+                                        </a>
+                                    </div>
+                                    <div class="blog-title">
+                                        <a href="/">
+                                            <h4>THE STANDARD LOREM</h4>
+                                        </a>
+                                        <div class="blog-details">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Laudantium, voluptas dicta! Veritatis beatae cum ....
+                                        </div>
+                                        <div class="blog-btn btn-primary">
+                                            <a href="/">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div><div class="owl-item" style="width: 641.5px; margin-right: 30px;"><div class="item">
+                    <div class="blog-content col-xs-12">
+                        <div class="blog-info row d-flex align-items-center">
+                            <div class="blog-left col-md-6">
+                                <div class="blog-img">
+                                    <img src="./4.png" alt="">
+                                    <div class="blog-day">
+                                        <div class="blog-date">22</div>
+                                        <div class="blog-month">Nov</div>
+                                    </div>
+                                    <div class="post-hover">
+                                        <a class="zoom" href="/"><i class="fa-solid
+                                                fa-magnifying-glass-plus"></i></a>
+                                        <a class="read-link" href="/"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-right col-md-6">
+                                <div class="blog-text">
+                                    <div class="blog-icon">
+                                        <a href="/">
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                            <span>0 Comments</span>
+                                        </a>
+                                    </div>
+                                    <div class="blog-title">
+                                        <a href="/">
+                                            <h4>IT IS ESTABLISHED FACT</h4>
+                                        </a>
+                                        <div class="blog-details">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Laudantium, voluptas dicta! Veritatis beatae cum ....
+                                        </div>
+                                        <div class="blog-btn btn-primary">
+                                            <a href="/">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+        </div>
+    </div>
+    <!-- .Blog_Section -->
+    <!-- Clint_Section -->
+    <div class="client-section wow fadeInUp" style="visibility: hidden; animation-name: none;">
+        <div class="container mt">
+            <div class="client owl-carousel owl-theme swiper-pager owl-loaded owl-drag">
+                
+                
+                
+                
+                
+                
+                
+                
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1764px, 0px, 0px); transition: 0.25s; width: 4410px;"><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./3(3).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./4(1).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./5(1).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./6.png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./7.png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./8.png" alt="">
+                </div></div><div class="owl-item" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./1(4).png" alt="">
+                </div></div><div class="owl-item" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./2(4).png" alt="">
+                </div></div><div class="owl-item active" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./3(3).png" alt="">
+                </div></div><div class="owl-item active" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./4(1).png" alt="">
+                </div></div><div class="owl-item active" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./5(1).png" alt="">
+                </div></div><div class="owl-item active" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./6.png" alt="">
+                </div></div><div class="owl-item active" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./7.png" alt="">
+                </div></div><div class="owl-item active" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./8.png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./1(4).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./2(4).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./3(3).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./4(1).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./5(1).png" alt="">
+                </div></div><div class="owl-item cloned" style="width: 210.5px; margin-right: 10px;"><div class="client-item item">
+                    <img class="img-fluid client-img" src="./6.png" alt="">
+                </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+        </div>
+    </div>
+    <!-- .Clint_Section -->
+
+    <!-- Footer_Section -->
+    <footer class="bd-footer pt-lg-5 pt-3 mt-5 footer-color">
+        <div class="container">
+            <div class="row footer-row">
+                <div id="contact" class="col-lg-3 mb-lg-3 mb-md-0 mb-sm-0 footer-column">
+                    <h4 class="toggled">
+                        Contact
+                        <span class="toggle-open"><i class="fa fa-chevron-down"></i></span>
+                    </h4>
+                    <ul class="list-unstyled to-show contact">
+                        <li class="map-icon"><i class="fa-solid fa-location-dot"></i>
+                            National
+                            park,dl 588436,US
+                        </li>
+                        <li class="phone-icon"><i class="fa-solid fa-phone"></i> +91 123 456
+                            789
+                        </li>
+                        <li class="fax-icon"><i class="fa-solid fa-fax"></i> 0123-456-789</li>
+                        <li class="mail-icon"><i class="fas fa-envelope"></i> demo@Yourstore.com </li>
+                    </ul>
+                </div>
+                <div id="information" class="col-lg-3 mb-lg-3 mb-md-0 mb-sm-0 footer-column">
+                    <h4 class="toggled">
+                        Information
+                        <span class="toggle-open"><i class="fa fa-chevron-down"></i></span>
+                    </h4>
+                    <ul class="list-unstyled text-set to-show information ">
+                        <li class=""><a href="/">Terms &amp; Conditions</a></li>
+                        <li class=""><a href="/">Delivery Information</a></li>
+                        <li class=""><a href="/">About Us</a></li>
+                        <li class=""><a href="/">Privacy Policy</a></li>
+                        <li class=""><a href="/">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div id="extras" class="col-lg-3 mb-lg-3 mb-md-0 mb-sm-0 footer-column">
+                    <h4 class="toggled">
+                        Extras
+                        <span class="toggle-open"><i class="fa fa-chevron-down"></i></span>
+                    </h4>
+                    <ul class="list-unstyled text-set to-show extras">
+                        <li class=""><a href="/">Brands</a></li>
+                        <li class=""><a href="/">Gift Certificates</a></li>
+                        <li class=""><a href="/">Affiliate</a></li>
+                        <li class=""><a href="/">Specials</a></li>
+                        <li class=""><a href="/">Site Map</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 footer-column find-us">
+                    <div class="position-footer-right">
+                        <div class="follow-link">
+                            <h4 class="toggled">Find Us On</h4>
+                            <div class="media-icon mb-4">
+                                <span class="fb"><i class="fab fa-facebook-f"></i></span>
+                                <span class="insta"><i class="fab fa-instagram"></i></span>
+                                <span class="wh-app"><i class="fab fa-whatsapp"></i></span>
+                                <span class="pint"><i class="fab fa-pinterest"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="payment-link">
+                            <h4 class="toggled">Payment</h4>
+                            <div class="payment-icon mt-4">
+                                <span class="visa"><i class="fab fa-cc-visa"></i></span>
+                                <span class="master"><i class="fab fa-cc-mastercard"></i></span>
+                                <span class="pay-pal"><i class="fab fa-cc-paypal"></i></span>
+                                <span class="discover"><i class="fab fa-cc-discover"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copy-right">
+                <span class="last-text">
+                    Powered By OpenCart Your Store © 2023
+                </span>
+            </div>
+        </div>
     </footer>
+    <a class="scrollToTop back-to-top" href="/" data-toggle="tooltip" title="" data-original-title="Top" style="display: none;"><i class="fa fa-angle-up"></i></a>
+    <!-- .Footer_Section -->
 
-    <!-- Agrega los scripts de Bootstrap al final del documento -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+
+    <!-- Jquery link  -->
+    <script src="./jquery-3.3.1.min.js.descarga"></script>
+    <!-- Bootstrap Bundle with Popper js -->
+    <script src="./bootstrap.min.js.descarga"></script>
+    <!-- Owlcarousel Js Link -->
+    <script src="./owl.carousel.min.js.descarga"></script>
+    <!-- Jquery Js link -->
+    <script src="./theme.js.descarga"></script>
+    <!-- Themability Megamenu Js link -->
+    <script src="./themability_megamenu.js.descarga"></script>
+    <!-- wow javascript -->
+    <script src="./wow.min.js.descarga"></script>
+    <script>new WOW().init();</script>
+    <link href="./animate.min.css" rel="stylesheet">
+
+
+</body></html>
