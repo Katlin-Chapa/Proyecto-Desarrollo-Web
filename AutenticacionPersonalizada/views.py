@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Create your views here.
 class UsuarioInicioVista(LoginView):
@@ -14,6 +15,7 @@ class UsuarioInicioVista(LoginView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
+        messages.success(self.request, '¡Inicio de sesión exitoso!')  # Agregar mensaje de éxito
         return super().form_valid(form)
 
 
