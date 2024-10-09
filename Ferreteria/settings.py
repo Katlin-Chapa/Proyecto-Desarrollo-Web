@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'Inicio',
     'AutenticacionPersonalizada',
     'Registro',
-
+    'Inventario',
 ]
 
 # Creación de token autenticacion

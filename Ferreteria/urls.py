@@ -28,4 +28,5 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('', include("Inicio.urls")),
     path('registro/', include('Registro.urls')),
+    path('inventario/', include('Inventario.urls')),
 ]
