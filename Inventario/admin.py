@@ -1,18 +1,21 @@
 from django.contrib import admin
-from .models import Producto
+from .models import Categoria, Subcategoria, Producto
 
 # Register your models here.
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ('nombre',)
+    search_fields = ('nombre',)
 
+@admin.register(Subcategoria)
+class SubcategoriaAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'categoria')
+    list_filter = ('categoria',)
+    search_fields = ('nombre',)
+    
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
-    # Campos a mostrar en la lista
-    list_display = ('nombre', 'precio', 'stock', 'categoria', 'fecha_ingreso')
-    
-    # Permitir búsqueda por ciertos campos
-    search_fields = ('nombre', 'categoria')
-    
-    # Filtros disponibles en la interfaz de administración
-    list_filter = ('categoria',)
-    
-    # Opcional: permite ordenar los productos por fecha de ingreso
+    list_display = ('nombre', 'precio', 'stock', 'subcategoria', 'fecha_ingreso')
+    search_fields = ('nombre',)
+    list_filter = ('subcategoria',)
     ordering = ('-fecha_ingreso',)
