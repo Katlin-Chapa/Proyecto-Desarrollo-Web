@@ -15,7 +15,8 @@ class SubcategoriaAdmin(admin.ModelAdmin):
     
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'precio', 'stock', 'subcategoria', 'fecha_ingreso')
+    list_display = ('nombre', 'precio', 'stock', 'subcategoria', 'fecha_ingreso', 'imagen')
     search_fields = ('nombre',)
     list_filter = ('subcategoria',)
     ordering = ('-fecha_ingreso',)
+
