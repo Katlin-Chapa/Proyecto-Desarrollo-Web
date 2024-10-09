@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include("Inicio.urls")),
     path('registro/', include('Registro.urls')),
     path('inventario/', include('Inventario.urls')),
+    
 ]
 
 if settings.DEBUG:
