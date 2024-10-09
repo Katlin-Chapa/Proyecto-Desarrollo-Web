@@ -3,13 +3,13 @@ from django.db import models
 # Create your models here.
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=255, null=False)  # No permite nulos
+    nombre = models.CharField(max_length=255, null=False)
 
     def __str__(self):
         return self.nombre
 
 class Subcategoria(models.Model):
-    nombre = models.CharField(max_length=255, null=False)  # No permite nulos
+    nombre = models.CharField(max_length=255, null=False)
     categoria = models.ForeignKey(Categoria, related_name='subcategorias', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -22,8 +22,14 @@ class Producto(models.Model):
     stock = models.IntegerField(null=False)
     subcategoria = models.ForeignKey(Subcategoria, related_name='productos', on_delete=models.CASCADE)
     fecha_ingreso = models.DateTimeField(auto_now_add=True)
-    imagen = models.ImageField(upload_to='productos/', null=True, blank=True)  # Añade este campo
 
     def __str__(self):
         return self.nombre
+
+class ImagenProducto(models.Model):
+    producto = models.ForeignKey(Producto, related_name='imagenes', on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='productos/')
+
+    def __str__(self):
+        return f"Imagen de {self.producto.nombre}"
 
