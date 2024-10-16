@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'AutenticacionPersonalizada',
     'Registro',
     'Inventario',
+    'Ventas',  # Asegúrate de que esté en esta lista
 ]
 
 # Creación de token autenticacion
