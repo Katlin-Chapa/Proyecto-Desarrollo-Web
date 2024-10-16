@@ -91,8 +91,15 @@ WSGI_APPLICATION = 'Ferreteria.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ferreteria',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'localhost',  # o la dirección IP de tu servidor de PostgreSQL
+        'PORT': '5432',       # El puerto predeterminado de PostgreSQL
+        'OPTIONS': {
+            'options': '-c search_path=autenticacion,inventario,public'
+        }
     }
 }
 
