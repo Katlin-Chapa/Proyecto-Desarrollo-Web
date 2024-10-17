@@ -1,20 +1,11 @@
 from rest_framework import serializers
-from .models import DetalleVenta
-from Inventario.models import Producto  # Ajusta el import según tu estructura de carpetas
-from django.contrib.auth.models import User  # Asegúrate de importar el modelo User
+from .models import Producto, DetalleVenta
 
 class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
-        fields = ['id', 'nombre', 'precio']  # Asegúrate de incluir solo los campos necesarios
+        fields = ['id', 'nombre', 'precio', 'subcategoria']  # Añade los campos que necesites
 
-class DetalleVentaSerializer(serializers.ModelSerializer):
-    producto = ProductoSerializer()
-    usuario = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())  # Cambiamos el nombre a 'usuario'
-
-    class Meta:
-        model = DetalleVenta
-        fields = ['producto', 'cantidad', 'subtotal', 'usuario']  # Usamos 'usuario' en lugar de 'usuario_id'
 
     def create(self, validated_data):
         producto_data = validated_data.pop('producto')
@@ -25,9 +16,9 @@ class DetalleVentaSerializer(serializers.ModelSerializer):
         subtotal = producto.precio * cantidad
         
         # Crear el detalle de venta
-        detalle_venta = DetalleVenta.objects.create(producto=producto, cantidad=cantidad, subtotal=subtotal, **validated_data)
+        detalle_venta = DetalleVenta.objects.create(producto=producto, cantidad=cantidad, subtotal=subtotal, **validated_data)  # Asegúrate de pasar los datos validados
         
-        # Actualizar el stock del producto (asumiendo que existe un campo de stock en Producto)
+        # Actualizar el stock del producto
         producto.stock -= cantidad
         producto.save()
 
