@@ -22,12 +22,28 @@ class VentaSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         detalles_data = validated_data.pop('detalles')
+        
+        if not detalles_data:
+            raise serializers.ValidationError("Se debe agregar al menos un detalle de venta.")
+
+        total = 0  # Inicializar el total
+
         venta = Venta.objects.create(**validated_data)
+
         for detalle_data in detalles_data:
             producto_data = detalle_data.pop('producto')
             producto = Producto.objects.get(id=producto_data['id'])
-            DetalleVenta.objects.create(venta=venta, producto=producto, **detalle_data)
+            cantidad = detalle_data['cantidad']
+            subtotal = producto.precio * cantidad  # Calcular subtotal
+            total += subtotal  # Sumar al total
+
+            DetalleVenta.objects.create(venta=venta, producto=producto, cantidad=cantidad, subtotal=subtotal)
+
             # Actualizar el stock del producto
-            producto.stock -= detalle_data['cantidad']
+            producto.stock -= cantidad
             producto.save()
+
+        venta.total = total  # Asignar el total calculado
+        venta.save()  # Guardar la venta con el total actualizado
+
         return venta
