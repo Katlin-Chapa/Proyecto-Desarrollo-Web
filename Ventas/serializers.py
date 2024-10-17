@@ -1,51 +1,34 @@
 from rest_framework import serializers
-from .models import Producto, Venta, DetalleVenta
+from .models import DetalleVenta
+from Inventario.models import Producto  # Ajusta el import según tu estructura de carpetas
+from django.contrib.auth.models import User  # Asegúrate de importar el modelo User
 
 class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
-        fields = '__all__'
+        fields = ['id', 'nombre', 'precio']  # Asegúrate de incluir solo los campos necesarios
 
 class DetalleVentaSerializer(serializers.ModelSerializer):
     producto = ProductoSerializer()
+    usuario = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())  # Cambiamos el nombre a 'usuario'
 
     class Meta:
         model = DetalleVenta
-        fields = ['producto', 'cantidad', 'subtotal']
-
-class VentaSerializer(serializers.ModelSerializer):
-    detalles = DetalleVentaSerializer(many=True)
-
-    class Meta:
-        model = Venta
-        fields = ['id', 'usuario', 'fecha_venta', 'total', 'detalles']
+        fields = ['producto', 'cantidad', 'subtotal', 'usuario']  # Usamos 'usuario' en lugar de 'usuario_id'
 
     def create(self, validated_data):
-        detalles_data = validated_data.pop('detalles')
+        producto_data = validated_data.pop('producto')
+        producto = Producto.objects.get(id=producto_data['id'])
+        cantidad = validated_data['cantidad']
         
-        if not detalles_data:
-            raise serializers.ValidationError("Se debe agregar al menos un detalle de venta.")
+        # Calcular el subtotal
+        subtotal = producto.precio * cantidad
+        
+        # Crear el detalle de venta
+        detalle_venta = DetalleVenta.objects.create(producto=producto, cantidad=cantidad, subtotal=subtotal, **validated_data)
+        
+        # Actualizar el stock del producto (asumiendo que existe un campo de stock en Producto)
+        producto.stock -= cantidad
+        producto.save()
 
-        venta = Venta.objects.create(**validated_data)
-
-        total = 0  # Inicializar el total
-
-        for detalle_data in detalles_data:
-            producto_data = detalle_data.pop('producto')
-            producto = Producto.objects.get(id=producto_data['id'])
-            cantidad = detalle_data['cantidad']
-
-            # Crear el DetalleVenta, lo que también calculará el subtotal
-            detalle_venta = DetalleVenta(venta=venta, producto=producto, cantidad=cantidad)
-            detalle_venta.save()  # Esto guarda y calcula el subtotal automáticamente
-
-            total += detalle_venta.subtotal  # Sumar el subtotal al total
-
-            # Actualizar el stock del producto
-            producto.stock -= cantidad
-            producto.save()
-
-        venta.total = total  # Asignar el total calculado
-        venta.save()  # Guardar la venta con el total actualizado
-
-        return venta
+        return detalle_venta
