@@ -16,5 +16,9 @@ class DetalleVenta(models.Model):
     cantidad = models.IntegerField()
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, editable=False)
 
+    def save(self, *args, **kwargs):
+        self.subtotal = self.producto.precio * self.cantidad  # Calcular subtotal
+        super().save(*args, **kwargs)  # Llama al método save de la clase base
+
     def __str__(self):
         return f'{self.producto.nombre} - Cantidad: {self.cantidad}'
