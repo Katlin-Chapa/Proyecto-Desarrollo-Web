@@ -2,16 +2,16 @@
     <div class="page-checkout">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">Checkout</h1>
+                <h1 class="title">Pagar</h1>
             </div>
 
             <div class="column is-12 box">
                 <table class="table is-fullwidth">
                     <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
                             <th>Total</th>
                         </tr>
                     </thead>
@@ -39,35 +39,35 @@
             </div>
 
             <div class="column is-12 box">
-                <h2 class="subtitle">Shipping details</h2>
+                <h2 class="subtitle">Detalles de envío</h2>
 
-                <p class="has-text-grey mb-4">* All fields are required</p>
+                <p class="has-text-grey mb-4">* Todos los campos son obligatorios</p>
 
                 <div class="columns is-multiline">
                     <div class="column is-6">
                         <div class="field">
-                            <label>First name*</label>
+                            <label>Nombre*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="first_name">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Last name*</label>
+                            <label>Apellido*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="last_name">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>E-mail*</label>
+                            <label>Correo electrónico*</label>
                             <div class="control">
                                 <input type="email" class="input" v-model="email">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Phone*</label>
+                            <label>Teléfono*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="phone">
                             </div>
@@ -76,21 +76,21 @@
 
                     <div class="column is-6">
                         <div class="field">
-                            <label>Address*</label>
+                            <label>Dirección*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="address">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Zip code*</label>
+                            <label>Código postal*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="zipcode">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Place*</label>
+                            <label>Ciudad*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="place">
                             </div>
@@ -108,8 +108,7 @@
 
                 <template v-if="cartTotalLength">
                     <hr>
-
-                    <button class="button is-dark" @click="submitForm">Pay with Stripe</button>
+                    <button class="button is-dark" @click="submitForm">Pagar con Stripe</button>
                 </template>
             </div>
         </div>
@@ -139,7 +138,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Checkout | Djackets'
+        document.title = 'Pagar | Djackets'
 
         this.cart = this.$store.state.cart
 
@@ -159,31 +158,31 @@ export default {
             this.errors = []
 
             if (this.first_name === '') {
-                this.errors.push('The first name field is missing!')
+                this.errors.push('¡El campo de nombre es obligatorio!')
             }
 
             if (this.last_name === '') {
-                this.errors.push('The last name field is missing!')
+                this.errors.push('¡El campo de apellido es obligatorio!')
             }
 
             if (this.email === '') {
-                this.errors.push('The email field is missing!')
+                this.errors.push('¡El campo de correo electrónico es obligatorio!')
             }
 
             if (this.phone === '') {
-                this.errors.push('The phone field is missing!')
+                this.errors.push('¡El campo de teléfono es obligatorio!')
             }
 
             if (this.address === '') {
-                this.errors.push('The address field is missing!')
+                this.errors.push('¡El campo de dirección es obligatorio!')
             }
 
             if (this.zipcode === '') {
-                this.errors.push('The zip code field is missing!')
+                this.errors.push('¡El campo de código postal es obligatorio!')
             }
 
             if (this.place === '') {
-                this.errors.push('The place field is missing!')
+                this.errors.push('¡El campo de ciudad es obligatorio!')
             }
 
             if (!this.errors.length) {
@@ -193,9 +192,9 @@ export default {
                     if (result.error) {
                         this.$store.commit('setIsLoading', false)
 
-                        this.errors.push('Something went wrong with Stripe. Please try again')
+                        this.errors.push('Hubo un problema con Stripe. Por favor, inténtalo de nuevo.')
 
-                        console.log(result.error.message)
+                        console.error(result.error.message)
                     } else {
                         this.stripeTokenHandler(result.token)
                     }
@@ -203,18 +202,11 @@ export default {
             }
         },
         async stripeTokenHandler(token) {
-            const items = []
-
-            for (let i = 0; i < this.cart.items.length; i++) {
-                const item = this.cart.items[i]
-                const obj = {
-                    product: item.product.id,
-                    quantity: item.quantity,
-                    price: item.product.price * item.quantity
-                }
-
-                items.push(obj)
-            }
+            const items = this.cart.items.map(item => ({
+                product: item.product.id,
+                quantity: item.quantity,
+                price: item.product.price * item.quantity
+            }))
 
             const data = {
                 'first_name': this.first_name,
@@ -235,24 +227,20 @@ export default {
                     this.$router.push('/cart/success')
                 })
                 .catch(error => {
-                    this.errors.push('Something went wrong. Please try again')
+                    this.errors.push('Algo salió mal. Por favor, inténtalo de nuevo.')
 
-                    console.log(error)
+                    console.error(error)
                 })
 
-                this.$store.commit('setIsLoading', false)
+            this.$store.commit('setIsLoading', false)
         }
     },
     computed: {
         cartTotalPrice() {
-            return this.cart.items.reduce((acc, curVal) => {
-                return acc += curVal.product.price * curVal.quantity
-            }, 0)
+            return this.cart.items.reduce((acc, curVal) => acc + curVal.product.price * curVal.quantity, 0)
         },
         cartTotalLength() {
-            return this.cart.items.reduce((acc, curVal) => {
-                return acc += curVal.quantity
-            }, 0)
+            return this.cart.items.reduce((acc, curVal) => acc + curVal.quantity, 0)
         }
     }
 }

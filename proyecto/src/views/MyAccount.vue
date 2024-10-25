@@ -2,17 +2,17 @@
     <div class="page-my-account">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">My account</h1>
+                <h1 class="title">Mi cuenta</h1>
             </div>
 
             <div class="column is-12">
-                <button @click="logout()" class="button is-danger">Log out</button>
+                <button @click="logout()" class="button is-danger">Cerrar sesión</button>
             </div>
 
             <hr>
 
             <div class="column is-12">
-                <h2 class="subtitle">My orders</h2>
+                <h2 class="subtitle">Mis pedidos</h2>
 
                 <OrderSummary
                     v-for="order in orders"
@@ -39,7 +39,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'My account | Djackets'
+        document.title = 'Mi cuenta | Ferretería'
 
         this.getMyOrders()
     },

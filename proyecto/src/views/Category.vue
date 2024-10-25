@@ -51,14 +51,13 @@ export default {
                 .get(`/api/v1/products/${categorySlug}/`)
                 .then(response => {
                     this.category = response.data
-
-                    document.title = this.category.name + ' | Djackets'
+                    document.title = this.category.name + ' | Ferretería'
                 })
                 .catch(error => {
-                    console.log(error)
+                    console.error(error)
 
                     toast({
-                        message: 'Something went wrong. Please try again.',
+                        message: 'Ocurrió un error. Por favor, inténtalo de nuevo.',
                         type: 'is-danger',
                         dismissible: true,
                         pauseOnHover: true,
