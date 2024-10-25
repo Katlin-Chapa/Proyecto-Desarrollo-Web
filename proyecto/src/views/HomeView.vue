@@ -1,7 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <section class="hero is-medium is-dark mb-6">
+        <div class="hero-body has-text-centered">
+            <p class="title mb-6">
+                Welcome to Djacket
+            </p>
+            <p class="subtitle">
+                The best jacket store online
+            </p>
+        </div>
+    </section>
+
+    <div class="columns is-multiline">
+      <div class="column is-12">
+          <h2 class="is-size-2 has-text-centered">Latest products</h2>
+      </div>
+
+      <ProductBox 
+        v-for="producto in ultimosProductos"
+        v-bind:key="producto.id"
+        v-bind:product="producto" />
+    </div>
   </div>
 </template>
 
@@ -12,7 +31,6 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
   }
 }
 </script>
