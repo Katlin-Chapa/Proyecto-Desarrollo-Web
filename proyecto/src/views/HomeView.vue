@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+<<<<<<< HEAD
     <section class="hero is-medium is-dark mb-6">
         <div class="hero-body has-text-centered">
             <p class="title mb-6">
@@ -21,6 +22,10 @@
         v-bind:key="producto.id"
         v-bind:product="producto" />
     </div>
+=======
+    <img alt="Vue logo" src="../assets/logo.png">
+    <HelloWorld msg="Bienvenido a nuestra página"/>
+>>>>>>> 688b37ab2de5c452f61343eaaac45042f000121b
   </div>
 </template>
 

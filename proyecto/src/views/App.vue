@@ -33,17 +33,21 @@
         </div>
 
         <div class="navbar-end">
+          <router-link to="/ceramica" class="navbar-item">Cerámica</router-link>
+          <router-link to="/fontaneria" class="navbar-item">Fontanería</router-link>
+          <router-link to="/herramientas" class="navbar-item">Herramientas</router-link>
+
           <div class="navbar-item">
             <div class="buttons">
               <template v-if="$store.state.isAuthenticated">
-                <router-link to="/mi-cuenta" class="button is-light">Mi cuenta</router-link>
+                <router-link to="/my-account" class="button is-light">Mi cuenta</router-link>
               </template>
 
               <template v-else>
-                <router-link to="/iniciar-sesion" class="button is-light">Iniciar sesión</router-link>
+                <router-link to="/log-in" class="button is-light">Iniciar sesión</router-link>
               </template>
 
-              <router-link to="/carrito" class="button is-success">
+              <router-link to="/cart" class="button is-success">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                 <span>Carrito ({{ cartTotalLength }})</span>
               </router-link>
@@ -62,7 +66,7 @@
     </section>
 
     <footer class="footer">
-      <p class="has-text-centered">Derechos de autor 2024</p>
+      <p class="has-text-centered">Derechos de autor © 2024</p>
     </footer>
   </div>
 </template>

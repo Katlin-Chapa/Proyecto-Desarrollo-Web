@@ -1,6 +1,10 @@
 <template>
     <div class="box mb-4">
+<<<<<<< HEAD
         <h3 class="is-size-4 mb-6">Orden #{{ order.id }}</h3>
+=======
+        <h3 class="is-size-4 mb-6">Pedido #{{ order.id }}</h3>
+>>>>>>> 688b37ab2de5c452f61343eaaac45042f000121b
 
         <h4 class="is-size-5">Productos</h4>
 
