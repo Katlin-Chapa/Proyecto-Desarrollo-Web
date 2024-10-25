@@ -2,7 +2,7 @@
   <div id="wrapper">
     <nav class="navbar is-dark">
       <div class="navbar-brand">
-        <router-link to="/" class="navbar-item"><strong>Ferretería</strong></router-link>
+        <router-link to="/" class="navbar-item"><strong>Djackets</strong></router-link>
 
         <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
           <span aria-hidden="true"></span>
@@ -33,17 +33,22 @@
         </div>
 
         <div class="navbar-end">
+          <router-link to="/herramientas" class="navbar-item">Herramientas</router-link>
+          <router-link to="/carpinteria" class="navbar-item">Carpinteria</router-link>
+          <router-link to="/ceramica" class="navbar-item">Ceramica</router-link>
+          <router-link to="/fontaneria" class="navbar-item">Fontanería</router-link>
+
           <div class="navbar-item">
             <div class="buttons">
               <template v-if="$store.state.isAuthenticated">
-                <router-link to="/mi-cuenta" class="button is-light">Mi cuenta</router-link>
+                <router-link to="/my-account" class="button is-light">Mi cuenta</router-link>
               </template>
 
               <template v-else>
-                <router-link to="/iniciar-sesion" class="button is-light">Iniciar sesión</router-link>
+                <router-link to="/log-in" class="button is-light">Iniciar sesión</router-link>
               </template>
 
-              <router-link to="/carrito" class="button is-success">
+              <router-link to="/cart" class="button is-success">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                 <span>Carrito ({{ cartTotalLength }})</span>
               </router-link>
@@ -62,7 +67,9 @@
     </section>
 
     <footer class="footer">
-      <p class="has-text-centered">Derechos de autor 2024</p>
+      <p class="has-text-centered">
+        <span class="icon"><i class="fas fa-copyright"></i></span> Derechos de autor © 2024
+      </p>
     </footer>
   </div>
 </template>
