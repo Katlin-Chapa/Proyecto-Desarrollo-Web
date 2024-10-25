@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_=#=h8#!9e$24k3h^4x6p57c3mg+7vyu$li+gzc(w*y&u6hx*b'
+SECRET_KEY = 'django-insecure-)!nx+6q(bq_@(@2z-%8n3i=!a@m3t0#&p*(c%@nt9*dv$o1@d&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,9 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'Categorias',
-    'Cuenta',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +54,7 @@ ROOT_URLCONF = 'Ferreteria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,7 +62,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'Categorias.context_processors.enlaces_menu',
             ],
         },
     },
@@ -107,9 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'es-gt'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Guatemala'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -120,19 +116,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR /'static'
-STATICFILES_DIRS = [
-    'tienda/static'
-]
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR /'media'
-
-from django.contrib.messages import constants as messages
-MESSAGE_TAGS = {
-    messages.ERROR : 'danger',
-}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
