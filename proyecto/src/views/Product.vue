@@ -14,7 +14,7 @@
             <div class="column is-3">
                 <h2 class="subtitle">Información</h2> 
 
-                <p><strong>Precio: </strong>${{ product.price }}</p> 
+                <p><strong>Precio: </strong>Q. {{ product.price }}</p> 
 
                 <div class="field has-addons mt-6">
                     <div class="control">

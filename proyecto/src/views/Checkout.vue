@@ -32,7 +32,7 @@
                         <tr>
                             <td colspan="2">Total</td>
                             <td>{{ cartTotalLength }}</td>
-                            <td>${{ cartTotalPrice.toFixed(2) }}</td>
+                            <td>Q. {{ cartTotalPrice.toFixed(2) }}</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -144,7 +144,7 @@ export default {
         this.cart = this.$store.state.cart
 
         if (this.cartTotalLength > 0) {
-            this.stripe = Stripe('pk_test_51H1HiuKBJV2qfWbD2gQe6aqanfw6Eyul5PO2KeOuSRlUMuaV4TxEtaQyzr9DbLITSZweL7XjK3p74swcGYrE2qEX00Hz7GmhMI')
+            this.stripe = Stripe('pk_test_51QDfqzLSSND5dmdGshJtJheS0xsG6Tk4WM68n37GeDkyvDBGDrirmyML9qyhWl8kPc6H8HQGeWewY0F6YH3wfGID00LrotTArY')
             const elements = this.stripe.elements();
             this.card = elements.create('card', { hidePostalCode: true })
 
