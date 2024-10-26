@@ -47,27 +47,24 @@ export default {
 
             this.$store.commit('setIsLoading', true)
 
-            axios
-                .get(`/api/v1/products/${categorySlug}/`)
-                .then(response => {
-                    this.category = response.data
+            try {
+                const response = await axios.get(`/api/v1/products/${categorySlug}/`)
+                this.category = response.data
+                document.title = this.category.name + ' | Ferretería'  
+            } catch (error) {
+                console.error(error)
 
-                    document.title = this.category.name + ' | Djackets'
+                toast({
+                    message: 'Algo salió mal. Por favor, intenta de nuevo.',
+                    type: 'is-danger',
+                    dismissible: true,
+                    pauseOnHover: true,
+                    duration: 2000,
+                    position: 'bottom-right',
                 })
-                .catch(error => {
-                    console.log(error)
-
-                    toast({
-                        message: 'Something went wrong. Please try again.',
-                        type: 'is-danger',
-                        dismissible: true,
-                        pauseOnHover: true,
-                        duration: 2000,
-                        position: 'bottom-right',
-                    })
-                })
-
-            this.$store.commit('setIsLoading', false)
+            } finally {
+                this.$store.commit('setIsLoading', false)
+            }
         }
     }
 }

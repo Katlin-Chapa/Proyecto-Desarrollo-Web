@@ -8,13 +8,13 @@
 
                 <h1 class="title">{{ product.name }}</h1>
 
-                <p>{{ product.description }}</p>
+                <p>{{ product.description }}</p> 
             </div>
 
             <div class="column is-3">
-                <h2 class="subtitle">Information</h2>
+                <h2 class="subtitle">Información</h2> 
 
-                <p><strong>Price: </strong>${{ product.price }}</p>
+                <p><strong>Precio: </strong>${{ product.price }}</p> 
 
                 <div class="field has-addons mt-6">
                     <div class="control">
@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="control">
-                        <a class="button is-dark" @click="addToCart()">Add to cart</a>
+                        <a class="button is-dark" @click="addToCart()">Agregar al carrito</a> 
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@ export default {
                 .then(response => {
                     this.product = response.data
 
-                    document.title = this.product.name + ' | Djackets'
+                    document.title = this.product.name + ' | Ferretería' 
                 })
                 .catch(error => {
                     console.log(error)
@@ -78,7 +78,7 @@ export default {
             this.$store.commit('addToCart', item)
 
             toast({
-                message: 'The product was added to the cart',
+                message: 'El producto ha sido agregado al carrito', 
                 type: 'is-success',
                 dismissible: true,
                 pauseOnHover: true,

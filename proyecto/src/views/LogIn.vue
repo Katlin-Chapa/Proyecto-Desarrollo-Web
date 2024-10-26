@@ -2,18 +2,18 @@
     <div class="page-log-in">
         <div class="columns">
             <div class="column is-4 is-offset-4">
-                <h1 class="title">Log in</h1>
+                <h1 class="title">Iniciar sesión</h1> <!-- Cambié el título a español -->
 
                 <form @submit.prevent="submitForm">
                     <div class="field">
-                        <label>Username</label>
+                        <label>Nombre de usuario</label> <!-- Cambié a español -->
                         <div class="control">
                             <input type="text" class="input" v-model="username">
                         </div>
                     </div>
 
                     <div class="field">
-                        <label>Password</label>
+                        <label>Contraseña</label> <!-- Cambié a español -->
                         <div class="control">
                             <input type="password" class="input" v-model="password">
                         </div>
@@ -25,13 +25,13 @@
 
                     <div class="field">
                         <div class="control">
-                            <button class="button is-dark">Log in</button>
+                            <button class="button is-dark">Iniciar sesión</button> <!-- Cambié a español -->
                         </div>
                     </div>
 
                     <hr>
 
-                    Or <router-link to="/sign-up">click here</router-link> to sign up!
+                    O <router-link to="/sign-up">haz clic aquí</router-link> para registrarte! 
                 </form>
             </div>
         </div>
@@ -51,7 +51,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Log In | Djackets'
+        document.title = 'Iniciar sesión | Ferretería'  
     },
     methods: {
         async submitForm() {
@@ -85,7 +85,7 @@ export default {
                             this.errors.push(`${property}: ${error.response.data[property]}`)
                         }
                     } else {
-                        this.errors.push('Something went wrong. Please try again')
+                        this.errors.push('Ocurrió un error. Por favor, inténtalo de nuevo') 
                         
                         console.log(JSON.stringify(error))
                     }

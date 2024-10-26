@@ -9,9 +9,9 @@
                 <table class="table is-fullwidth">
                     <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
                             <th>Total</th>
                         </tr>
                     </thead>
@@ -22,9 +22,9 @@
                             v-bind:key="item.product.id"
                         >
                             <td>{{ item.product.name }}</td>
-                            <td>${{ item.product.price }}</td>
+                            <td>Q. {{ item.product.price }}</td>
                             <td>{{ item.quantity }}</td>
-                            <td>${{ getItemTotal(item).toFixed(2) }}</td>
+                            <td>Q. {{ getItemTotal(item).toFixed(2) }}</td>
                         </tr>
                     </tbody>
 
@@ -39,35 +39,35 @@
             </div>
 
             <div class="column is-12 box">
-                <h2 class="subtitle">Shipping details</h2>
+                <h2 class="subtitle">Detalles de envío</h2>
 
-                <p class="has-text-grey mb-4">* All fields are required</p>
+                <p class="has-text-grey mb-4">* Todos los campos son obligatorios</p>
 
                 <div class="columns is-multiline">
                     <div class="column is-6">
                         <div class="field">
-                            <label>First name*</label>
+                            <label>Nombre*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="first_name">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Last name*</label>
+                            <label>Apellido*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="last_name">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>E-mail*</label>
+                            <label>Correo electrónico*</label>
                             <div class="control">
                                 <input type="email" class="input" v-model="email">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Phone*</label>
+                            <label>Teléfono*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="phone">
                             </div>
@@ -76,21 +76,21 @@
 
                     <div class="column is-6">
                         <div class="field">
-                            <label>Address*</label>
+                            <label>Dirección*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="address">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Zip code*</label>
+                            <label>Código postal*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="zipcode">
                             </div>
                         </div>
 
                         <div class="field">
-                            <label>Place*</label>
+                            <label>Lugar*</label>
                             <div class="control">
                                 <input type="text" class="input" v-model="place">
                             </div>
@@ -109,7 +109,7 @@
                 <template v-if="cartTotalLength">
                     <hr>
 
-                    <button class="button is-dark" @click="submitForm">Pay with Stripe</button>
+                    <button class="button is-dark" @click="submitForm">Pagar con Stripe</button>
                 </template>
             </div>
         </div>
@@ -139,7 +139,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Checkout | Djackets'
+        document.title = 'Checkout | Ferretería'  
 
         this.cart = this.$store.state.cart
 
@@ -159,31 +159,31 @@ export default {
             this.errors = []
 
             if (this.first_name === '') {
-                this.errors.push('The first name field is missing!')
+                this.errors.push('¡Falta el campo del nombre!')
             }
 
             if (this.last_name === '') {
-                this.errors.push('The last name field is missing!')
+                this.errors.push('¡Falta el campo del apellido!')
             }
 
             if (this.email === '') {
-                this.errors.push('The email field is missing!')
+                this.errors.push('¡Falta el campo del correo electrónico!')
             }
 
             if (this.phone === '') {
-                this.errors.push('The phone field is missing!')
+                this.errors.push('¡Falta el campo del teléfono!')
             }
 
             if (this.address === '') {
-                this.errors.push('The address field is missing!')
+                this.errors.push('¡Falta el campo de la dirección!')
             }
 
             if (this.zipcode === '') {
-                this.errors.push('The zip code field is missing!')
+                this.errors.push('¡Falta el campo del código postal!')
             }
 
             if (this.place === '') {
-                this.errors.push('The place field is missing!')
+                this.errors.push('¡Falta el campo del lugar!')
             }
 
             if (!this.errors.length) {
@@ -193,7 +193,7 @@ export default {
                     if (result.error) {
                         this.$store.commit('setIsLoading', false)
 
-                        this.errors.push('Something went wrong with Stripe. Please try again')
+                        this.errors.push('Algo salió mal con Stripe. Por favor, intenta de nuevo.')
 
                         console.log(result.error.message)
                     } else {
@@ -235,12 +235,12 @@ export default {
                     this.$router.push('/cart/success')
                 })
                 .catch(error => {
-                    this.errors.push('Something went wrong. Please try again')
+                    this.errors.push('Algo salió mal. Por favor, intenta de nuevo.')
 
                     console.log(error)
                 })
 
-                this.$store.commit('setIsLoading', false)
+            this.$store.commit('setIsLoading', false)
         }
     },
     computed: {

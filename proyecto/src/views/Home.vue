@@ -3,17 +3,17 @@
     <section class="hero is-medium is-dark mb-6">
         <div class="hero-body has-text-centered">
             <p class="title mb-6">
-                Welcome to Djacket
+                Bienvenido a Ferretería
             </p>
             <p class="subtitle">
-                The best jacket store online
+                La mejor tienda de herramientas oficial
             </p>
         </div>
     </section>
 
     <div class="columns is-multiline">
       <div class="column is-12">
-          <h2 class="is-size-2 has-text-centered">Latest products</h2>
+          <h2 class="is-size-2 has-text-centered">Últimos productos</h2>
       </div>
 
       <ProductBox 
@@ -42,7 +42,7 @@ export default {
   mounted() {
     this.getLatestProducts()
 
-    document.title = 'Home | Djackets'
+    document.title = 'Inicio | Ferretería'  
   },
   methods: {
     async getLatestProducts() {

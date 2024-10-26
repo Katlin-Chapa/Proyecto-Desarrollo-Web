@@ -2,16 +2,16 @@
     <div class="page-cart">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">Cart</h1>
+                <h1 class="title">Carrito</h1>
             </div>
 
             <div class="column is-12 box">
                 <table class="table is-fullwidth" v-if="cartTotalLength">
                     <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
                             <th>Total</th>
                             <th></th>
                         </tr>
@@ -26,17 +26,17 @@
                     </tbody>
                 </table>
 
-                <p v-else>You don't have any products in your cart...</p>
+                <p v-else>No tienes productos en tu carrito...</p>
             </div>
 
             <div class="column is-12 box">
-                <h2 class="subtitle">Summary</h2>
+                <h2 class="subtitle">Resumen</h2>
 
-                <strong>${{ cartTotalPrice.toFixed(2) }}</strong>, {{ cartTotalLength }} items
+                <strong>Q. {{ cartTotalPrice.toFixed(2) }}</strong>, {{ cartTotalLength }} artículos
 
                 <hr>
 
-                <router-link to="/cart/checkout" class="button is-dark">Proceed to checkout</router-link>
+                <router-link to="/cart/checkout" class="button is-dark">Proceder al pago</router-link>
             </div>
         </div>
     </div>
