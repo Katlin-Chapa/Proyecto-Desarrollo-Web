@@ -20,13 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-msysqatg^y22zw4y54qv8l$dbcc-r_ksblis5p8g+s0f5wd9gv'
+SECRET_KEY = 'django-insecure-p11ddj2teyx%bheypcde!ax*v+mui_p-*@uqp%)+r2q42#y9!('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+STRIPE_SECRET_KEY = 'sk_test_51QDfqzLSSND5dmdGOJMKmQ7Z3gbDUcBlUENCknjsf5TjRKOsGFqIcCs4dUHuus2qN8ijysIHE7KNkLBqGbrqiVid00u40QlMDP'
 
 # Application definition
 
@@ -43,11 +45,13 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
 
-    'Productos',
+    'product',
+    'order'
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
 ]
 
 MIDDLEWARE = [
@@ -60,7 +64,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'Ferreteria.urls'
 
 TEMPLATES = [
@@ -128,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = '/media/' 
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
