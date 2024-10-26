@@ -2,25 +2,25 @@
     <div class="page-sign-up">
         <div class="columns">
             <div class="column is-4 is-offset-4">
-                <h1 class="title">Registrarse</h1>
+                <h1 class="title">Sign up</h1>
 
                 <form @submit.prevent="submitForm">
                     <div class="field">
-                        <label>Nombre de usuario</label>
+                        <label>Username</label>
                         <div class="control">
                             <input type="text" class="input" v-model="username">
                         </div>
                     </div>
 
                     <div class="field">
-                        <label>Contraseña</label>
+                        <label>Password</label>
                         <div class="control">
                             <input type="password" class="input" v-model="password">
                         </div>
                     </div>
 
                     <div class="field">
-                        <label>Repetir contraseña</label>
+                        <label>Repeat password</label>
                         <div class="control">
                             <input type="password" class="input" v-model="password2">
                         </div>
@@ -32,13 +32,13 @@
 
                     <div class="field">
                         <div class="control">
-                            <button class="button is-dark">Registrarse</button>
+                            <button class="button is-dark">Sign up</button>
                         </div>
                     </div>
 
                     <hr>
 
-                    O <router-link to="/log-in">haga clic aquí</router-link> para iniciar sesión!
+                    Or <router-link to="/log-in">click here</router-link> to log in!
                 </form>
             </div>
         </div>
@@ -64,15 +64,15 @@ export default {
             this.errors = []
 
             if (this.username === '') {
-                this.errors.push('Falta el nombre de usuario')
+                this.errors.push('The username is missing')
             }
 
             if (this.password === '') {
-                this.errors.push('La contraseña es demasiado corta')
+                this.errors.push('The password is too short')
             }
 
             if (this.password !== this.password2) {
-                this.errors.push('Las contraseñas no coinciden')
+                this.errors.push('The passwords doesn\'t match')
             }
 
             if (!this.errors.length) {
@@ -85,7 +85,7 @@ export default {
                     .post("/api/v1/users/", formData)
                     .then(response => {
                         toast({
-                            message: '¡Cuenta creada, por favor inicie sesión!',
+                            message: 'Account created, please log in!',
                             type: 'is-success',
                             dismissible: true,
                             pauseOnHover: true,
@@ -103,7 +103,7 @@ export default {
 
                             console.log(JSON.stringify(error.response.data))
                         } else if (error.message) {
-                            this.errors.push('Algo salió mal. Por favor, intente de nuevo')
+                            this.errors.push('Something went wrong. Please try again')
                             
                             console.log(JSON.stringify(error))
                         }

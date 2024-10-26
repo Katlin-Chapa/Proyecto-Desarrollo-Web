@@ -2,18 +2,18 @@
     <div class="page-log-in">
         <div class="columns">
             <div class="column is-4 is-offset-4">
-                <h1 class="title">Iniciar sesión</h1>
+                <h1 class="title">Log in</h1>
 
                 <form @submit.prevent="submitForm">
                     <div class="field">
-                        <label>Usuario</label>
+                        <label>Username</label>
                         <div class="control">
                             <input type="text" class="input" v-model="username">
                         </div>
                     </div>
 
                     <div class="field">
-                        <label>Contraseña</label>
+                        <label>Password</label>
                         <div class="control">
                             <input type="password" class="input" v-model="password">
                         </div>
@@ -25,13 +25,13 @@
 
                     <div class="field">
                         <div class="control">
-                            <button class="button is-dark">Iniciar sesión</button>
+                            <button class="button is-dark">Log in</button>
                         </div>
                     </div>
 
                     <hr>
 
-                    O <router-link to="/sign-up">haz clic aquí</router-link> para registrarte.
+                    Or <router-link to="/sign-up">click here</router-link> to sign up!
                 </form>
             </div>
         </div>
@@ -51,7 +51,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Iniciar sesión | Ferretería'
+        document.title = 'Log In | Djackets'
     },
     methods: {
         async submitForm() {
@@ -85,7 +85,7 @@ export default {
                             this.errors.push(`${property}: ${error.response.data[property]}`)
                         }
                     } else {
-                        this.errors.push('Algo salió mal. Inténtalo de nuevo')
+                        this.errors.push('Something went wrong. Please try again')
                         
                         console.log(JSON.stringify(error))
                     }
