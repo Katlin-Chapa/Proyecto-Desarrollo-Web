@@ -33,10 +33,11 @@
         </div>
 
         <div class="navbar-end">
-          <router-link to="/ceramica" class="navbar-item">Cerámica</router-link>
-          <router-link to="/fontaneria" class="navbar-item">Fontanería</router-link>
-          <router-link to="/carpintería" class="navbar-item">Carpintería</router-link>
-          <router-link to="/otros" class="navbar-item">Otros</router-link>
+          <div class="navbar-item" v-for="category in categories" :key="category.id">
+            <router-link :to="category.get_absolute_url" class="navbar-item">
+              {{ category.name }}
+            </router-link>
+          </div>
           <div class="navbar-item">
             <div class="buttons">
               <template v-if="$store.state.isAuthenticated">
@@ -66,7 +67,7 @@
     </section>
 
     <footer class="footer">
-      <p class="has-text-centered">Copyright (c) 2021</p>
+      <p class="has-text-centered">Copyright &copy; 2024</p>
     </footer>
   </div>
 </template>
@@ -80,6 +81,20 @@ export default {
       showMobileMenu: false,
       cart: {
         items: []
+      },
+      categories: []
+    }
+  },
+  created() {
+    this.fetchCategories();
+  },
+  methods: {
+    async fetchCategories() {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/v1/categories/');
+        this.categories = response.data;
+      } catch (error) {
+        console.error("Error fetching categories:", error);
       }
     }
   },
