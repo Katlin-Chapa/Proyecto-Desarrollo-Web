@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 env
 venv
 
-=======
->>>>>>> 67138b2b1b212570bb79dee021f34db35fcfff10
 # Django #
 *.log
 *.pot
@@ -170,8 +167,4 @@ pnpm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
-<<<<<<< HEAD
 *.sw?
-=======
-*.sw?
->>>>>>> 67138b2b1b212570bb79dee021f34db35fcfff10
