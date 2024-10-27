@@ -144,9 +144,8 @@ GitHub.sublime-settings
 
 # Vue #
 .DS_Store
-node_modules
-/dist
-
+/proyecto/node_modules
+/proyecto/dist
 
 # local env files
 .env.local
