@@ -35,7 +35,7 @@
         <div class="navbar-end">
           <router-link to="/ceramica" class="navbar-item">Cerámica</router-link>
           <router-link to="/fontaneria" class="navbar-item">Fontanería</router-link>
-          <router-link to="/carpintería" class="navbar-item">Carpintería</router-link>
+          <router-link to="/carpinteria" class="navbar-item">Carpintería</router-link>
           <router-link to="/otros" class="navbar-item">Otros</router-link>
           <div class="navbar-item">
             <div class="buttons">
