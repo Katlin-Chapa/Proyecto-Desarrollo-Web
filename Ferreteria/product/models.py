@@ -6,7 +6,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Nombre')
-    slug = models.SlugField(verbose_name='Slug')
+    slug = models.SlugField(verbose_name='Nombre sin espacios y en minusculas para url')
 
     class Meta:
         ordering = ('name',)
@@ -22,7 +22,7 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, verbose_name='Categoría')
     name = models.CharField(max_length=255, verbose_name='Nombre')
-    slug = models.SlugField(verbose_name='Slug')
+    slug = models.SlugField(verbose_name='Nombre sin espacios y en minusculas para url')
     description = models.TextField(blank=True, null=True, verbose_name='Descripción')
     price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Precio')
     image = models.ImageField(upload_to='uploads/', blank=True, null=True, verbose_name='Imagen')
