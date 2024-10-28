@@ -62,15 +62,17 @@
                         <div class="field">
                             <label>Correo electrónico*</label>
                             <div class="control">
-                                <input type="email" class="input" v-model="email">
+                                <input type="email" class="input" v-model="email" @blur="validateEmail">
                             </div>
+                            <p class="help is-danger" v-if="emailError">{{ emailError }}</p>
                         </div>
 
                         <div class="field">
                             <label>Teléfono*</label>
                             <div class="control">
-                                <input type="text" class="input" v-model="phone">
+                                <input type="text" class="input" v-model="phone" @blur="validatePhone">
                             </div>
+                            <p class="help is-danger" v-if="phoneError">{{ phoneError }}</p>
                         </div>
                     </div>
 
@@ -85,8 +87,9 @@
                         <div class="field">
                             <label>Código postal*</label>
                             <div class="control">
-                                <input type="text" class="input" v-model="zipcode">
+                                <input type="text" class="input" v-model="zipcode" @blur="validateZipcode">
                             </div>
+                            <p class="help is-danger" v-if="zipcodeError">{{ zipcodeError }}</p>
                         </div>
 
                         <div class="field">
@@ -108,7 +111,6 @@
 
                 <template v-if="cartTotalLength">
                     <hr>
-
                     <button class="button is-dark" @click="submitForm">Pagar con Stripe</button>
                 </template>
             </div>
@@ -152,11 +154,31 @@ export default {
         }
     },
     methods: {
+        validateEmail() {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            this.emailError = !emailPattern.test(this.email) ? 'Por favor ingresa un correo electrónico válido.' : '';
+        },
+        validatePhone() {
+            const phonePattern = /^[0-9]*$/; 
+            this.phoneError = !phonePattern.test(this.phone) ? 'El número de teléfono solo puede contener números.' : '';
+        },
+        validateZipcode() {
+            const zipcodePattern = /^[0-9]*$/; 
+            this.zipcodeError = !zipcodePattern.test(this.zipcode) ? 'El código postal solo puede contener números.' : '';
+        },
         getItemTotal(item) {
             return item.quantity * item.product.price
         },
         submitForm() {
+            this.validateEmail();
+            this.validatePhone();
+            this.validateZipcode();
             this.errors = []
+
+            if (this.emailError || this.phoneError || this.zipcodeError) {
+                this.errors.push('Revisa los campos del formulario')
+                return;
+            }
 
             if (this.first_name === '') {
                 this.errors.push('¡Falta el campo del nombre!')
