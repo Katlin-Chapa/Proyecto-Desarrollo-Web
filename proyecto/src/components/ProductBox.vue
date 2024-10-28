@@ -27,5 +27,8 @@ export default {
     margin-top: -1.25rem;
     margin-left: -1.25rem;
     margin-right: -1.25rem;
+    width: 300px;    
+    height: 200px;  
+    overflow: hidden;
   }
 </style>

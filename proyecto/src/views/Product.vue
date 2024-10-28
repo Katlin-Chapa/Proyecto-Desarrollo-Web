@@ -1,19 +1,17 @@
 <template>
     <div class="page-product">
         <div class="columns is-multiline">
-            <div class="column is-9">
+            <div class="column is-7">
                 <figure class="image mb-6">
-                    <img v-bind:src="product.get_image">
+                    <img v-bind:src="product.get_image" class="fixed-image-size">
                 </figure>
 
                 <h1 class="title">{{ product.name }}</h1>
-
                 <p>{{ product.description }}</p> 
             </div>
 
             <div class="column is-3">
                 <h2 class="subtitle">Información</h2> 
-
                 <p><strong>Precio: </strong>Q. {{ product.price }}</p> 
 
                 <div class="field has-addons mt-6">
@@ -89,3 +87,23 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+  .image {
+    margin-top: -1.25rem;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    width: 600px;    
+    height: 300px;  
+    overflow: hidden;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+</style>
